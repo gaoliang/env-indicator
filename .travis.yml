@@ -1,0 +1,5 @@
+language: node_js
+node_js: lts/*
+cache: npm
+script:
+  - quasar build -m bex
