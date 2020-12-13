@@ -272,8 +272,33 @@ export default {
 
       // put init data
       if (result.envs === undefined) {
-        that.envs = []
-        chrome.storage.sync.set({'envs': []})
+        let envs = [{
+          "envBackgroundColor": "#00a300",
+          "envName": "Dev 🤣",
+          "position": "left",
+          "ruleType": "regex",
+          "ruleValue": "(localhost)|(127.0.0.1).*"
+        }, {
+          "envBackgroundColor": "#d6d600",
+          "envName": "Staging 👀",
+          "position": "left",
+          "ruleType": "regex",
+          "ruleValue": "(st\\.)|(staging\\.)"
+        }, {
+          "envBackgroundColor": "#ff8000",
+          "envName": "Preview 🚗",
+          "position": "left",
+          "ruleType": "regex",
+          "ruleValue": "(pre\\.)|(preview)"
+        }, {
+          "envBackgroundColor": "#ff6666",
+          "envName": "Production ⚠️",
+          "position": "left",
+          "ruleType": "suffix",
+          "ruleValue": ".srv"
+        }]
+        that.envs = envs
+        chrome.storage.sync.set({'envs': envs})
       }
     });
   }
