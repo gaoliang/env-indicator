@@ -8,3 +8,4 @@ chrome.browserAction.onClicked.addListener((/* tab */) => {
     // Tab opened.
   })
 })
+
