@@ -1,0 +1,54 @@
+{
+  "extensionName": {
+    "message": "Env Indicator 环境指示器",
+    "description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+    "message": "在页面上添加一个环境指示器，用来区分测试环境、开发环境、生产环境。 除此之外，你还可以创建自己的指示器规则",
+    "description": "Description of the extension."
+  },
+  "addEnv": {
+    "message": "增加环境",
+    "description": "Add Environment"
+  },
+  "allEnvs": {
+    "message": "全部环境配置"
+  },
+  "envName": {
+    "message": "环境名称"
+  },
+  "envNameRequired": {
+    "message": "环境名称必须填写"
+  },
+  "envBackgroundColor": {
+    "message": "指示器背景颜色"
+  },
+  "ruleType": {
+    "message": "规则类型"
+  },
+  "contains": {
+    "message": "域名包含规则值"
+  },
+  "prefix": {
+    "message": "域名以规则值开头"
+  },
+  "suffix": {
+    "message": "域名以规则值结尾"
+  },
+  "regex": {
+    "message": "域名符合正则表达式"
+  },
+  "ruleValue": {
+    "message": "规则值"
+  },
+  "ruleNameRequired": {
+    "message": "规则值必须填写"
+  },
+  "operation": {
+    "message": "操作"
+  },
+  "order": {
+    "message": "序号"
+  }
+}

@@ -1,8 +1,11 @@
-# Env Indicator (env-indicator)
+# Env Indicator Browser Extension
 
-A Env Indicator
+Add an indicator to differentiate QA environments from production. In addition, you can create your own indicator rules
+### Screenshots
 
-## Install the dependencies
+## Dev
+
+### Install the dependencies
 ```bash
 yarn
 ```

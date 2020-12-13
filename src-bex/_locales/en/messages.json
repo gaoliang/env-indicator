@@ -1,0 +1,54 @@
+{
+  "extensionName": {
+    "message": "Env Indicator",
+    "description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+    "message": "Add an indicator to differentiate QA environments from production. In addition, you can create your own indicator rules",
+    "description": "Description of the extension."
+  },
+  "addEnv": {
+    "message": "Add an Environment",
+    "description": "Add Environment"
+  },
+  "allEnvs": {
+    "message": "All Environments"
+  },
+  "envName": {
+    "message": "Environment Name"
+  },
+  "envNameRequired": {
+    "message": "Environment name is required."
+  },
+  "envBackgroundColor": {
+    "message": "Background Color"
+  },
+  "ruleType": {
+    "message": "Rule Type"
+  },
+  "contains": {
+    "message": "Domain contains rule value"
+  },
+  "prefix": {
+    "message": "Domain starts with rule value"
+  },
+  "suffix": {
+    "message": "Domain ends with rule value"
+  },
+  "regex": {
+    "message": "Domain match rule regular expression"
+  },
+  "ruleValue": {
+    "message": "Rule Value"
+  },
+  "ruleValueRequired": {
+    "message": "Rule value is required"
+  },
+  "operation": {
+    "message": "operation"
+  },
+  "order": {
+    "message": "Order"
+  }
+}
