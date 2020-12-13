@@ -126,7 +126,7 @@ cfg.module.rules.push({
         theme_color: '#027be3',
         icons: [
           {
-            src: 'icons/icon-128x128.png',
+            src: 'icons/favicon.ico',
             sizes: '128x128',
             type: 'image/png'
           },
