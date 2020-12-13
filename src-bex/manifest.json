@@ -31,7 +31,6 @@
   }],
   "options_page": "www/index.html",
   "permissions": [
-    "<all_urls>",
     "storage"
   ],
   "web_accessible_resources": [
