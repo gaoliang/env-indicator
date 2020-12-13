@@ -4,6 +4,8 @@ Add an indicator to differentiate QA environments from production. In addition, 
 
 [![Build Status](https://travis-ci.com/gaoliang/env-indicator.svg?branch=main)](https://travis-ci.com/gaoliang/env-indicator)
 ### Screenshots
+![examples](./docs/example.png)
+![config](./docs/config.png)
 
 ## Dev
 
