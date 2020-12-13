@@ -76,6 +76,9 @@
             <q-select filled v-model="form.ruleType" :options="ruleTypeOptions" :label="this.$i18n('ruleType')"
                       emit-value map-options/>
 
+            <q-select filled v-model="form.position" :options="positionOptions" :label="this.$i18n('position')"
+                      emit-value map-options/>
+
             <q-input
               filled
               v-model="form.ruleValue"
@@ -117,7 +120,8 @@ export default {
         envName: null,
         envBackgroundColor: '#00a300',
         ruleType: 'contains',
-        ruleValue: ''
+        ruleValue: '',
+        position: 'left',
       },
 
       ruleTypeOptions: [
@@ -136,6 +140,17 @@ export default {
         {
           label: this.$i18n('regex'),
           value: 'regex',
+        },
+      ],
+
+      positionOptions: [
+        {
+          label: this.$i18n('left'),
+          value: 'left',
+        },
+        {
+          label: this.$i18n('right'),
+          value: 'right',
         },
       ],
 
@@ -177,6 +192,12 @@ export default {
           field: 'envBackgroundColor',
         },
         {
+          name: 'position',
+          align: 'center',
+          label: this.$i18n('position'),
+          field: 'position',
+        },
+        {
           name: 'operation',
           align: 'center',
           label: this.$i18n('operation'),
@@ -193,7 +214,6 @@ export default {
       } else {
         this.envs.push(extend(true, {}, this.form))
       }
-      console.log(this.envs)
       let that = this
       chrome.storage.sync.set({"envs": this.envs}, function () {
         console.log('envs is set to ', that.envs);
@@ -207,6 +227,7 @@ export default {
       this.form.ruleType = 'contains'
       this.form.envBackgroundColor = '#00a300'
       this.form.ruleValue = ''
+      this.form.position = 'left'
     },
     addEnv() {
       this.editRowIndex = null;
@@ -245,10 +266,15 @@ export default {
   },
   mounted() {
     let that = this
-
     chrome.storage.sync.get(['envs'], function (result) {
       that.envs = result.envs
       console.log('rules currently is ', result.envs);
+
+      // put init data
+      if (result.envs === undefined) {
+        that.envs = []
+        chrome.storage.sync.set({'envs': []})
+      }
     });
   }
 }

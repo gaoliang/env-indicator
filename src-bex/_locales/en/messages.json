@@ -46,9 +46,18 @@
     "message": "Rule value is required"
   },
   "operation": {
-    "message": "operation"
+    "message": "Operation"
   },
   "order": {
     "message": "Order"
+  },
+  "position": {
+    "message": "Position"
+  },
+  "left": {
+    "message": "Left"
+  },
+  "right": {
+    "message": "Right"
   }
 }

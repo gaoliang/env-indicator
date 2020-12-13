@@ -10,14 +10,7 @@
     "128": "icons/icon-128x128.png"
   },
   "browser_action": {
-    "default_title": "quasar-browser-extension"
-  },
-  "background": {
-    "scripts": [
-      "www/bex-background.js",
-      "js/background.js"
-    ],
-    "persistent": true
+    "default_title": "__MSG_extensionName__"
   },
   "content_scripts": [{
     "matches": ["<all_urls>"],
@@ -29,11 +22,10 @@
       "css/content-css.css"
     ]
   }],
+  "options_page": "www/index.html",
   "permissions": [
     "<all_urls>",
-    "storage",
-    "tabs",
-    "activeTab"
+    "storage"
   ],
   "web_accessible_resources": [
     "www/*",

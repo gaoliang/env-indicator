@@ -7071,10 +7071,10 @@ rgba-regex@^1.0.0:
   resolved "https://registry.npmjs.org/rgba-regex/-/rgba-regex-1.0.0.tgz#43374e2e2ca0968b0ef1523460b7d730ff22eeb3"
   integrity sha1-QzdOLiyglosO8VI0YLfXMP8i7rM=
 
-ribbon-corner@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/ribbon-corner/-/ribbon-corner-1.0.1.tgz#1ec9da9c01be85039c36e61c52fddc5f88c9bd1e"
-  integrity sha512-MBhpa0pr3t+lz179LEOo0itDJfVMfyigcJg3sCE4oYiK9q3x/+nPpPwUmrnHaMxZXwNkyASXNGl1xJYJnYkLqQ==
+ribbon-corner@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/ribbon-corner/-/ribbon-corner-1.0.3.tgz#072e4414a3ca60becc69d472a907b5b0917a0447"
+  integrity sha512-LdnNTJeMVXdU899TQMO2f9oZkY+M6oqTowS21lT5qeBKyqIIjOcpdukw8J90t0YOanT4t1wRlxBEoWu/xv7VcA==
 
 rimraf@2.6.3:
   version "2.6.3"

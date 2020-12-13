@@ -23,7 +23,7 @@ function setEnv(env) {
     backgroundColor: env.envBackgroundColor,
     toCorner: 100,
     height: 50,
-    horizontalAlign: 'left',
+    horizontalAlign: env.position,
     text: env.envName,
     textColor: 'white',
     position: 'fixed',
@@ -34,10 +34,8 @@ function setEnv(env) {
 // TODO: use await
 chrome.storage.sync.get(['envs'], function (result) {
   const domain = window.location.hostname
-  console.log(domain)
   let envs = result.envs
   for (let env of envs) {
-    console.log(env)
     switch (env.ruleType) {
       case "contains":
         if (domain.includes(env.ruleValue.toLowerCase())) {

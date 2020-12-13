@@ -1,6 +1,8 @@
 # Env Indicator Browser Extension
 
 Add an indicator to differentiate QA environments from production. In addition, you can create your own indicator rules
+
+[![Build Status](https://travis-ci.com/gaoliang/env-indicator.svg?branch=main)](https://travis-ci.com/gaoliang/env-indicator)
 ### Screenshots
 
 ## Dev

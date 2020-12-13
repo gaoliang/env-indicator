@@ -50,5 +50,14 @@
   },
   "order": {
     "message": "序号"
+  },
+  "position": {
+    "message": "位置"
+  },
+  "left": {
+    "message": "左侧"
+  },
+  "right": {
+    "message": "右侧"
   }
 }
