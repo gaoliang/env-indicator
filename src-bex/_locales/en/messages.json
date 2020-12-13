@@ -37,7 +37,7 @@
     "message": "Domain ends with rule value"
   },
   "regex": {
-    "message": "Domain match rule regular expression"
+    "message": "Domain matches regex rule value"
   },
   "ruleValue": {
     "message": "Rule Value"
