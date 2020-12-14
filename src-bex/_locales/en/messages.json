@@ -59,5 +59,17 @@
   },
   "right": {
     "message": "Right"
+  },
+  "textColor": {
+    "message": "Text Color"
+  },
+  "shape": {
+    "message": "Shape"
+  },
+  "ribbon": {
+    "message": "Ribbon"
+  },
+  "triangle": {
+    "message": "Triangle"
   }
 }

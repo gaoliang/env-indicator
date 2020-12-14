@@ -20,6 +20,25 @@
             <q-avatar size="24px" :style="{ backgroundColor: props.value }"></q-avatar>
           </q-td>
         </template>
+        <template v-slot:body-cell-textColor="props">
+          <q-td :props="props">
+            <q-avatar size="24px" :style="{ backgroundColor: props.value }"></q-avatar>
+          </q-td>
+        </template>
+
+        <template v-slot:body-cell-shape="props">
+          <q-td :props="props">
+            {{ $i18n(props.value)}}
+          </q-td>
+        </template>
+
+        <template v-slot:body-cell-position="props">
+          <q-td :props="props">
+            {{ $i18n(props.value) }}
+          </q-td>
+        </template>
+
+
         <template v-slot:body-cell-operation="props">
           <q-td :props="props">
             <q-btn-group rounded>
@@ -73,10 +92,25 @@
               </template>
             </q-input>
 
-            <q-select filled v-model="form.ruleType" :options="ruleTypeOptions" :label="this.$i18n('ruleType')"
-                      emit-value map-options/>
+            <q-input
+              filled
+              v-model="form.textColor"
+              :rules="['anyColor']"
+              :label="this.$i18n('textColor')"
+            >
+              <template v-slot:append>
+                <q-icon name="colorize" class="cursor-pointer">
+                  <q-popup-proxy transition-show="scale" transition-hide="scale">
+                    <q-color v-model="form.textColor"/>
+                  </q-popup-proxy>
+                </q-icon>
+                <q-avatar size="24px" :style="{ backgroundColor: form.textColor }"></q-avatar>
 
-            <q-select filled v-model="form.position" :options="positionOptions" :label="this.$i18n('position')"
+              </template>
+            </q-input>
+
+
+            <q-select filled v-model="form.ruleType" :options="ruleTypeOptions" :label="this.$i18n('ruleType')"
                       emit-value map-options/>
 
             <q-input
@@ -86,6 +120,14 @@
               lazy-rules
               :rules="[ val => val && val.length > 0 || this.$i18n('ruleValueRequired')]"
             />
+
+            <q-select filled v-model="form.shape" :options="shapeOptions" :label="this.$i18n('shape')"
+                      emit-value map-options/>
+
+
+            <q-select filled v-model="form.position" :options="positionOptions" :label="this.$i18n('position')"
+                      emit-value map-options/>
+
 
             <div>
               <q-btn label="Save" type="submit" color="primary"/>
@@ -119,9 +161,11 @@ export default {
       form: {
         envName: null,
         envBackgroundColor: '#00a300',
+        textColor: "#FFFFFF",
         ruleType: 'contains',
         ruleValue: '',
         position: 'left',
+        shape: "ribbon"
       },
 
       ruleTypeOptions: [
@@ -153,6 +197,14 @@ export default {
           value: 'right',
         },
       ],
+
+      shapeOptions: [{
+        label: this.$i18n('ribbon'),
+        value: 'ribbon'
+      }, {
+        label: this.$i18n('triangle'),
+        value: 'triangle'
+      }],
 
       accept: false,
       formShow: false,
@@ -192,6 +244,18 @@ export default {
           field: 'envBackgroundColor',
         },
         {
+          name: 'textColor',
+          align: 'center',
+          label: this.$i18n('textColor'),
+          field: 'textColor'
+        },
+        {
+          name: 'shape',
+          align: 'center',
+          label: this.$i18n('shape'),
+          field: 'shape'
+        },
+        {
           name: 'position',
           align: 'center',
           label: this.$i18n('position'),
@@ -223,11 +287,13 @@ export default {
       this.formShow = false;
     },
     onReset() {
-      this.form.envName = null
-      this.form.ruleType = 'contains'
-      this.form.envBackgroundColor = '#00a300'
-      this.form.ruleValue = ''
-      this.form.position = 'left'
+      this.form.envName = null;
+      this.form.ruleType = 'contains';
+      this.form.envBackgroundColor = '#00a300';
+      this.form.ruleValue = '';
+      this.form.position = 'left';
+      this.form.textColor = '#FFFFFF';
+      this.form.shape = 'ribbon';
     },
     addEnv() {
       this.editRowIndex = null;
@@ -274,27 +340,35 @@ export default {
       if (result.envs === undefined) {
         let envs = [{
           "envBackgroundColor": "#00a300",
+          "textColor": "#FFFFFF",
           "envName": "Dev 🤣",
           "position": "left",
           "ruleType": "regex",
+          "shape": "triangle",
           "ruleValue": "(localhost)|(127.0.0.1).*"
         }, {
-          "envBackgroundColor": "#d6d600",
+          "envBackgroundColor": "#ffff00",
+          "textColor": "#666666",
           "envName": "Staging 👀",
           "position": "left",
           "ruleType": "regex",
+          "shape": "triangle",
           "ruleValue": "(st\\.)|(staging\\.)"
         }, {
           "envBackgroundColor": "#ff8000",
+          "textColor": "#FFFFFF",
           "envName": "Preview 🚗",
           "position": "left",
           "ruleType": "regex",
+          "shape": "ribbon",
           "ruleValue": "(pre\\.)|(preview)"
         }, {
           "envBackgroundColor": "#ff6666",
+          "textColor": "#FFFFFF",
           "envName": "Production ⚠️",
           "position": "left",
           "ruleType": "suffix",
+          "shape": "ribbon",
           "ruleValue": ".srv"
         }]
         that.envs = envs

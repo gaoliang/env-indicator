@@ -59,5 +59,17 @@
   },
   "right": {
     "message": "右侧"
+  },
+  "textColor": {
+    "message": "文字颜色"
+  },
+  "shape": {
+    "message": "形状"
+  },
+  "ribbon": {
+    "message": "丝带形"
+  },
+  "triangle": {
+    "message": "三角形"
   }
 }
