@@ -71,5 +71,11 @@
   },
   "triangle": {
     "message": "Triangle"
+  },
+  "preferences": {
+    "message": "Preferences"
+  },
+  "needRefresh": {
+    "message": "Remember to refresh the page"
   }
 }

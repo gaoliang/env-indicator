@@ -82,8 +82,22 @@ function setEnv(env) {
 }
 
 // TODO: use await
-chrome.storage.sync.get(['envs'], function (result) {
+chrome.storage.sync.get(['enable', 'envs'], function (result) {
 
+  let enable = result.enable;
+  // means init status
+  if (enable === undefined) {
+    enable = true;
+    chrome.storage.sync.set({
+      'enable': true
+    }, function () {
+      console.log("env indicator 数据初始化成功!")
+    });
+  }
+
+  if (!enable) {
+    return;
+  }
   let envs = result.envs
   if (result.envs === undefined) {
     envs = initEnvs;

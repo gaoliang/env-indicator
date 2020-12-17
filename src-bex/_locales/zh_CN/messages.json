@@ -71,5 +71,11 @@
   },
   "triangle": {
     "message": "三角形"
+  },
+  "preferences": {
+    "message": "偏好设置"
+  },
+  "needRefresh": {
+    "message": "刷新页面后生效"
   }
 }

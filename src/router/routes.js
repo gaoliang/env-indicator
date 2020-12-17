@@ -7,6 +7,11 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') }
     ]
   },
+  {
+    path: '/popup',
+    component: () => import('pages/popup.vue'),
+  },
+
 
   // Always leave this as last one,
   // but you can also remove it
