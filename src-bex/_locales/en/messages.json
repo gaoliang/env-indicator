@@ -1,11 +1,11 @@
 {
   "extensionName": {
-    "message": "Env Indicator",
+    "message": "Environment Indicator",
     "description": "Name of the extension."
   },
 
   "extensionDescription": {
-    "message": "Add an indicator to differentiate QA environments from production. In addition, you can create your own indicator rules",
+    "message": "Add an marker to differentiate QA environments from production. In addition, you can create your own indicator rules",
     "description": "Description of the extension."
   },
   "addEnv": {

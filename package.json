@@ -2,7 +2,7 @@
   "name": "env-indicator",
   "version": "0.0.1",
   "description": "A Env Indicator",
-  "productName": "Env Indicator",
+  "productName": "Environment Indicator",
   "author": "gaoliang <gaoliangim@gmail.com>",
   "private": true,
   "scripts": {
