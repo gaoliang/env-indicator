@@ -108,7 +108,7 @@ chrome.storage.sync.get(['enable', 'envs'], function (result) {
     });
   }
 
-  const domain = window.location.hostname
+  const domain = window.location.host
   for (let env of envs) {
     switch (env.ruleType) {
       case "contains":
