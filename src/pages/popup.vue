@@ -16,8 +16,10 @@
 </template>
 
 <script>
+var browser = require("webextension-polyfill");
+
 export default {
-  name: 'Error404',
+  name: 'Popup',
   data() {
     return {
       enable: null
@@ -25,9 +27,9 @@ export default {
   },
   methods: {
     goOptions() {
-      chrome.tabs.create({
-        url: chrome.extension.getURL('www/index.html')
-      }, (/* newTab */) => {
+      browser.tabs.create({
+        url: browser.extension.getURL('www/index.html')
+      }).then((/* newTab */) => {
         // Tab opened.
       })
     },
@@ -41,10 +43,10 @@ export default {
   },
   mounted() {
     let that = this;
-    chrome.storage.sync.get(['enable'], function (result) {
+    browser.storage.sync.get(['enable']).then((result) => {
       if (result.enable === undefined) {
         that.enable = true
-        chrome.storage.sync.set({'enable': true})
+        browser.storage.sync.set({'enable': true})
       } else {
         that.enable = result.enable
       }
@@ -52,8 +54,7 @@ export default {
   },
   watch: {
     enable() {
-      console.log("set chrome options")
-      chrome.storage.sync.set({"enable": this.enable})
+      browser.storage.sync.set({"enable": this.enable})
     }
   }
 }

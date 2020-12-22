@@ -1,41 +1,10 @@
 // Hooks added here have a bridge allowing communication between the BEX Content Script and the Quasar Application.
 // More info: https://quasar.dev/quasar-cli/developing-browser-extensions/content-hooks
 import { ribbonCorner } from 'ribbon-corner'
+import defaultEnvs from '../../src/assets/defaultEnvs.json'
+var browser = require("webextension-polyfill");
 
-const initEnvs = [{
-  "envBackgroundColor": "#00a300",
-  "textColor": "#FFFFFF",
-  "envName": "Dev 🤣",
-  "position": "left",
-  "ruleType": "regex",
-  "shape": "triangle",
-  "ruleValue": "(localhost)|(127.0.0.1).*"
-}, {
-  "envBackgroundColor": "#ffff00",
-  "textColor": "#666666",
-  "envName": "Staging 👀",
-  "position": "left",
-  "ruleType": "regex",
-  "shape": "triangle",
-  "ruleValue": "(st\\.)|(staging\\.)"
-}, {
-  "envBackgroundColor": "#ff8000",
-  "textColor": "#FFFFFF",
-  "envName": "Preview 🚗",
-  "position": "left",
-  "ruleType": "regex",
-  "shape": "ribbon",
-  "ruleValue": "(pre\\.)|(preview)"
-}, {
-  "envBackgroundColor": "#ff6666",
-  "textColor": "#FFFFFF",
-  "envName": "Production ⚠️",
-  "position": "left",
-  "ruleType": "suffix",
-  "shape": "ribbon",
-  "ruleValue": ".srv"
-}];
-
+console.log(defaultEnvs)
 export default function attachContentHooks(/* bridge */) {
   // Hook into the bridge to listen for events sent from the client BEX.
   /*
@@ -81,30 +50,20 @@ function setEnv(env) {
 
 }
 
-// TODO: use await
-chrome.storage.sync.get(['enable', 'envs'], function (result) {
+browser.storage.sync.get(['enable', 'envs']).then(result => {
 
-  let enable = result.enable;
-  // means init status
-  if (enable === undefined) {
-    enable = true;
-    chrome.storage.sync.set({
-      'enable': true
-    }, function () {
-      console.log("env indicator 数据初始化成功!")
-    });
-  }
-
-  if (!enable) {
+  // only return on enable is false
+  if (result.enable === false) {
     return;
   }
+
   let envs = result.envs
   if (result.envs === undefined) {
-    envs = initEnvs;
-    chrome.storage.sync.set({
+    envs = defaultEnvs;
+    browser.storage.sync.set({
       'envs': envs
-    }, function () {
-      console.log("env indicator 数据初始化成功!")
+    }).then(() => {
+      console.log("env indicator init default envs success!")
     });
   }
 
@@ -137,4 +96,4 @@ chrome.storage.sync.get(['enable', 'envs'], function (result) {
         }
     }
   }
-});
+})

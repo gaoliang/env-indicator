@@ -146,6 +146,8 @@
 
 <script>
 import {extend} from 'quasar'
+import defaultEnvs from '../assets/defaultEnvs.json'
+var browser = require("webextension-polyfill");
 
 export default {
   name: 'PageIndex',
@@ -279,7 +281,7 @@ export default {
         this.envs.push(extend(true, {}, this.form))
       }
       let that = this
-      chrome.storage.sync.set({"envs": this.envs}, function () {
+      browser.storage.sync.set({"envs": this.envs}).then(() => {
         console.log('envs is set to ', that.envs);
       });
       // reset editing status
@@ -308,7 +310,7 @@ export default {
     },
     deleteEnv(props) {
       this.envs.splice(props.rowIndex, 1);
-      chrome.storage.sync.set({"envs": this.envs}, function () {
+      browser.storage.sync.set({"envs": this.envs}).then(() => {
         console.log('envs is set to ' + this.envs);
       });
     },
@@ -316,7 +318,7 @@ export default {
       let tmp = this.envs[props.rowIndex - 1];
       this.$set(this.envs, props.rowIndex - 1, this.envs[props.rowIndex]);
       this.$set(this.envs, props.rowIndex, tmp);
-      chrome.storage.sync.set({"envs": this.envs}, function () {
+      browser.storage.sync.set({"envs": this.envs}).then(() => {
         console.log('envs is set to ' + this.envs);
       });
     },
@@ -325,54 +327,21 @@ export default {
       this.$set(this.envs, props.rowIndex + 1, this.envs[props.rowIndex]);
       this.$set(this.envs, props.rowIndex, tmp);
 
-      chrome.storage.sync.set({"envs": this.envs}, function () {
+      browser.storage.sync.set({"envs": this.envs}).then(() => {
         console.log('envs is set to ' + this.envs);
       });
     },
   },
   mounted() {
     let that = this
-    chrome.storage.sync.get(['envs'], function (result) {
+    browser.storage.sync.get(['envs']).then((result) => {
       that.envs = result.envs
       console.log('rules currently is ', result.envs);
 
       // put init data
       if (result.envs === undefined) {
-        let envs = [{
-          "envBackgroundColor": "#00a300",
-          "textColor": "#FFFFFF",
-          "envName": "Dev 🤣",
-          "position": "left",
-          "ruleType": "regex",
-          "shape": "triangle",
-          "ruleValue": "(localhost)|(127.0.0.1).*"
-        }, {
-          "envBackgroundColor": "#ffff00",
-          "textColor": "#666666",
-          "envName": "Staging 👀",
-          "position": "left",
-          "ruleType": "regex",
-          "shape": "triangle",
-          "ruleValue": "(st\\.)|(staging\\.)"
-        }, {
-          "envBackgroundColor": "#ff8000",
-          "textColor": "#FFFFFF",
-          "envName": "Preview 🚗",
-          "position": "left",
-          "ruleType": "regex",
-          "shape": "ribbon",
-          "ruleValue": "(pre\\.)|(preview)"
-        }, {
-          "envBackgroundColor": "#ff6666",
-          "textColor": "#FFFFFF",
-          "envName": "Production ⚠️",
-          "position": "left",
-          "ruleType": "suffix",
-          "shape": "ribbon",
-          "ruleValue": ".srv"
-        }]
-        that.envs = envs
-        chrome.storage.sync.set({'envs': envs})
+        that.envs = defaultEnvs
+        browser.storage.sync.set({'envs': defaultEnvs})
       }
     });
   }
