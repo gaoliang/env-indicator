@@ -3,6 +3,8 @@
 Add an indicator to differentiate QA environments from production. In addition, you can create your own indicator rules
 
 [![Build Status](https://travis-ci.com/gaoliang/env-indicator.svg?branch=main)](https://travis-ci.com/gaoliang/env-indicator)
+![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kgdbcpllbbnimjgoiomfdebldcofmlbl)
+![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/kgdbcpllbbnimjgoiomfdebldcofmlbl)
 ### Screenshots
 ![examples](./docs/example.png)
 ![config](./docs/config.png)
