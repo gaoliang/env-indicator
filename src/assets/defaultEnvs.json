@@ -1,0 +1,38 @@
+[
+    {
+        "envBackgroundColor": "#00a300",
+        "textColor": "#FFFFFF",
+        "envName": "Dev 🤣",
+        "position": "left",
+        "ruleType": "regex",
+        "shape": "triangle",
+        "ruleValue": "(localhost)|(127.0.0.1).*"
+    },
+    {
+        "envBackgroundColor": "#ffff00",
+        "textColor": "#666666",
+        "envName": "Staging 👀",
+        "position": "left",
+        "ruleType": "regex",
+        "shape": "triangle",
+        "ruleValue": "(st\\.)|(staging\\.)"
+    },
+    {
+        "envBackgroundColor": "#ff8000",
+        "textColor": "#FFFFFF",
+        "envName": "Preview 🚗",
+        "position": "left",
+        "ruleType": "regex",
+        "shape": "ribbon",
+        "ruleValue": "(pre\\.)|(preview)"
+    },
+    {
+        "envBackgroundColor": "#ff6666",
+        "textColor": "#FFFFFF",
+        "envName": "Production ⚠️",
+        "position": "left",
+        "ruleType": "suffix",
+        "shape": "ribbon",
+        "ruleValue": ".srv"
+    }
+]
