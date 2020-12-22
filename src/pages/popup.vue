@@ -33,7 +33,7 @@ export default {
         // Tab opened.
       })
     },
-    change(val) {
+    change() {
         this.$q.notify({
           position: 'top',
           timeout: 500,
@@ -44,6 +44,7 @@ export default {
   mounted() {
     let that = this;
     browser.storage.sync.get(['enable']).then((result) => {
+      // init enable value to true
       if (result.enable === undefined) {
         that.enable = true
         browser.storage.sync.set({'enable': true})

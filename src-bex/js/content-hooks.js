@@ -4,7 +4,6 @@ import { ribbonCorner } from 'ribbon-corner'
 import defaultEnvs from '../../src/assets/defaultEnvs.json'
 var browser = require("webextension-polyfill");
 
-console.log(defaultEnvs)
 export default function attachContentHooks(/* bridge */) {
   // Hook into the bridge to listen for events sent from the client BEX.
   /*
