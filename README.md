@@ -1,10 +1,11 @@
-# Env Indicator Browser Extension
+# Environment Indicator Browser Extension
 
-Add an indicator to differentiate QA environments from production. In addition, you can create your own indicator rules
+Add an environment marker to differentiate QA environments from production. In addition, you can create your own indicator rules
 
 [![Build Status](https://travis-ci.com/gaoliang/env-indicator.svg?branch=main)](https://travis-ci.com/gaoliang/env-indicator)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kgdbcpllbbnimjgoiomfdebldcofmlbl)](https://chrome.google.com/webstore/detail/env-indicator/kgdbcpllbbnimjgoiomfdebldcofmlbl)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/kgdbcpllbbnimjgoiomfdebldcofmlbl)](https://chrome.google.com/webstore/detail/env-indicator/kgdbcpllbbnimjgoiomfdebldcofmlbl)
+[![Mozilla Add-on](https://img.shields.io/amo/v/env-indicator)](https://addons.mozilla.org/zh-CN/firefox/addon/env-indicator/)
 ### Screenshots
 ![examples](./docs/example.png)
 ![config](./docs/config.png)

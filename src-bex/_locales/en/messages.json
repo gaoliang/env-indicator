@@ -5,7 +5,7 @@
   },
 
   "extensionDescription": {
-    "message": "Add an marker to differentiate QA environments from production. In addition, you can create your own indicator rules",
+    "message": "Add an environment marker to differentiate QA environments from production. In addition, you can create your own indicator rules",
     "description": "Description of the extension."
   },
   "addEnv": {
