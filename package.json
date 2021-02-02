@@ -7,7 +7,9 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
@@ -22,6 +24,7 @@
     "eslint-config-prettier": "^6.9.0",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-vue": "^6.1.2",
+    "vuepress": "^1.8.0",
     "webextension-polyfill": "^0.7.0"
   },
   "browserslist": [

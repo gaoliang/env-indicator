@@ -3,5 +3,9 @@
   "vetur.format.enable": false,
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
   
-  "vetur.experimental.templateInterpolationService": true
+  "vetur.experimental.templateInterpolationService": true,
+  "files.associations": {
+    "*.ttml": "xml",
+    "*.ttss": "css"
+  }
 }

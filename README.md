@@ -1,12 +1,22 @@
 # Environment Indicator Browser Extension
 
+
+<p align="center">
+  <a href="https://vuepress.vuejs.org/" target="_blank">
+    <img width="180" src="https://raw.githubusercontent.com/gaoliang/env-indicator/master/docs/docs/.vuepress/public/indicator.png" alt="logo">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://travis-ci.com/gaoliang/env-indicator"><img src="https://travis-ci.com/gaoliang/env-indicator.svg?branch=main" alt="Chrome Store State"></a>
+  <a href="https://chrome.google.com/webstore/detail/env-indicator/kgdbcpllbbnimjgoiomfdebldcofmlbl"><img src="https://img.shields.io/chrome-web-store/v/kgdbcpllbbnimjgoiomfdebldcofmlbl" alt="Chrome Store State"></a>
+  <a href="https://chrome.google.com/webstore/detail/env-indicator/kgdbcpllbbnimjgoiomfdebldcofmlbl"><img src="https://img.shields.io/chrome-web-store/users/kgdbcpllbbnimjgoiomfdebldcofmlbl" alt="Chrome Store State"></a>
+  <a href="https://chrome.google.com/webstore/detail/env-indicator/kgdbcpllbbnimjgoiomfdebldcofmlbl"><img src="https://img.shields.io/chrome-web-store/stars/kgdbcpllbbnimjgoiomfdebldcofmlbl" alt="Chrome Store Rate"></a>
+  <a href="https://addons.mozilla.org/zh-CN/firefox/addon/env-indicator"><img src="https://img.shields.io/amo/v/env-indicator" alt="Firfox store"></a>
+</p>
+
 Add an environment marker to differentiate QA environments from production. In addition, you can create your own indicator rules
 
-[![Build Status](https://travis-ci.com/gaoliang/env-indicator.svg?branch=main)](https://travis-ci.com/gaoliang/env-indicator)
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kgdbcpllbbnimjgoiomfdebldcofmlbl)](https://chrome.google.com/webstore/detail/env-indicator/kgdbcpllbbnimjgoiomfdebldcofmlbl)
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/users/kgdbcpllbbnimjgoiomfdebldcofmlbl)](https://chrome.google.com/webstore/detail/env-indicator/kgdbcpllbbnimjgoiomfdebldcofmlbl)
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/kgdbcpllbbnimjgoiomfdebldcofmlbl)](https://chrome.google.com/webstore/detail/env-indicator/kgdbcpllbbnimjgoiomfdebldcofmlbl)
-[![Mozilla Add-on](https://img.shields.io/amo/v/env-indicator)](https://addons.mozilla.org/zh-CN/firefox/addon/env-indicator/)
 ### Screenshots
 ![examples](./docs/example.png)
 ![config](./docs/config.png)
