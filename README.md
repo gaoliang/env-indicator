@@ -2,9 +2,7 @@
 
 
 <p align="center">
-  <a href="https://vuepress.vuejs.org/" target="_blank">
-    <img width="180" src="https://raw.githubusercontent.com/gaoliang/env-indicator/master/docs/docs/.vuepress/public/indicator.png" alt="logo">
-  </a>
+    <img width="180" src="https://raw.githubusercontent.com/gaoliang/env-indicator/main/docs/.vuepress/public/indicator.png" alt="logo">
 </p>
 
 <p align="center">
