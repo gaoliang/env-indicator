@@ -1,7 +1,7 @@
 {
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "manifest_version": 2,
   "default_locale": "en",
   "icons": {
@@ -15,7 +15,10 @@
   },
   "background": {
     "scripts": [
-    ]
+      "www/bex-background.js",
+      "js/background.js"
+    ],
+    "persistent": true
   },
   "content_scripts": [{
     "matches": ["<all_urls>"],

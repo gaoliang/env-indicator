@@ -77,5 +77,23 @@
   },
   "needRefresh": {
     "message": "Remember to refresh the page"
+  },
+  "import": {
+    "message": "Import"
+  },
+  "export": {
+    "message": "Export"
+  },
+  "cancel":  {
+    "message": "Cancel"
+  },
+  "merge": {
+    "message": "Merge"
+  },
+  "overwrite": {
+    "message": "Overwrite"
+  },
+  "importWarning": {
+    "message": "How to deal with the currently existing rules?"
   }
 }

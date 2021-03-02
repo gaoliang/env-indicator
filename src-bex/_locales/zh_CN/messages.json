@@ -77,5 +77,23 @@
   },
   "needRefresh": {
     "message": "刷新页面后生效"
+  },
+  "importJSON": {
+    "message": "导入"
+  },
+  "exportJSON": {
+    "message": "导出"
+  },
+  "cancel":  {
+    "message": "取消"
+  },
+  "merge": {
+    "message": "合并"
+  },
+  "overwrite": {
+    "message": "覆盖"
+  },
+  "importWarning": {
+    "message": "如何处理当前已有的规则？"
   }
 }

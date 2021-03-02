@@ -10,6 +10,24 @@
         :hide-pagination="true"
         :pagination="pagination"
       >
+        <template v-slot:top-right>
+          <input ref="jsonUploader" type='file' hidden  accept="application/json" @change="uploadJsonChange"/>
+          <q-btn
+            style="margin-right: 10px"
+            icon-right="unarchive"
+            :label="i18n('importJSON')"
+            no-caps
+            @click="importJson"
+          />
+
+          <q-btn
+            icon-right="archive"
+            :label="i18n('exportJSON')"
+            no-caps
+            @click="exportJson"
+          />
+        </template>
+
         <template v-slot:body-cell-index="props">
           <q-td :props="props">
             {{ props.rowIndex }}
@@ -28,7 +46,7 @@
 
         <template v-slot:body-cell-shape="props">
           <q-td :props="props">
-            {{ $i18n(props.value)}}
+            {{ $i18n(props.value) }}
           </q-td>
         </template>
 
@@ -138,6 +156,22 @@
       </q-card>
     </q-dialog>
 
+
+    <q-dialog v-model="importConfirm" persistent>i18n
+      <q-card>
+        <q-card-section class="row items-center">
+          <q-avatar icon="warning" color="primary" text-color="white" />
+          <span class="q-ml-sm">{{ $i18n('importWarning') }}</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat :label="i18n('cancel')" color="secondary" v-close-popup />
+          <q-btn flat :label="i18n('merge')" color="primary" @click="mergeImport"/>
+          <q-btn flat :label="i18n('overwrite')" color="primary" @click="overwriteImport"/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <q-btn fab icon="add" color="secondary" @click="addEnv"/>
     </q-page-sticky>
@@ -147,7 +181,16 @@
 <script>
 import {extend} from 'quasar'
 import defaultEnvs from '../assets/defaultEnvs.json'
+import Vue from 'vue'
 var browser = require("webextension-polyfill");
+
+function downloadTextFile(text, name) {
+  const a = document.createElement('a');
+  const type = name.split(".").pop();
+  a.href = URL.createObjectURL( new Blob([text], { type:`text/${type === "txt" ? "plain" : type}` }) );
+  a.download = name;
+  a.click();
+}
 
 export default {
   name: 'PageIndex',
@@ -210,6 +253,7 @@ export default {
 
       accept: false,
       formShow: false,
+      importConfirm: false,
       columns: [
         {
           name: 'index',
@@ -270,6 +314,7 @@ export default {
           field: 'operation'
         },
       ],
+      importData: {},
     }
   },
   methods: {
@@ -288,6 +333,7 @@ export default {
       this.editRowIndex = null;
       this.formShow = false;
     },
+    i18n: Vue.prototype.$i18n,
     onReset() {
       this.form.envName = null;
       this.form.ruleType = 'contains';
@@ -330,6 +376,38 @@ export default {
       browser.storage.sync.set({"envs": this.envs}).then(() => {
         console.log('envs is set to ' + this.envs);
       });
+    },
+
+    importJson() {
+      this.$refs.jsonUploader.click();
+    },
+    uploadJsonChange(e) {
+      let that = this
+      const reader = new FileReader();
+      console.log("读取文件了！")
+      reader.onload = function fileReadCompleted() {
+        that.importData = JSON.parse(reader.result)
+        that.importConfirm = true
+        // clear
+        that.$refs.jsonUploader.value=null;
+      };
+      reader.readAsText(this.$refs.jsonUploader.files[0]);
+    },
+    exportJson() {
+      browser.storage.sync.get(['envs']).then((result) => {
+        downloadTextFile(JSON.stringify(result.envs), "env-indicator-export.json");
+        }
+      )
+    },
+    mergeImport() {
+      this.envs = this.envs.concat(this.importData)
+      browser.storage.sync.set({'envs': this.envs})
+      this.importConfirm = false;
+    },
+    overwriteImport() {
+      this.envs = this.importData
+      browser.storage.sync.set({'envs': this.envs})
+      this.importConfirm = false;
     },
   },
   mounted() {
