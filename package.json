@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "@sentry/tracing": "^6.2.1",
+    "@sentry/vue": "^6.2.1",
     "core-js": "^3.6.5",
     "quasar": "^1.0.0",
     "ribbon-corner": "^1.0.5"

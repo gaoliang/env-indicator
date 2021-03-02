@@ -384,7 +384,6 @@ export default {
     uploadJsonChange(e) {
       let that = this
       const reader = new FileReader();
-      console.log("读取文件了！")
       reader.onload = function fileReadCompleted() {
         that.importData = JSON.parse(reader.result)
         that.importConfirm = true
