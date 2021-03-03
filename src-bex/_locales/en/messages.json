@@ -78,10 +78,10 @@
   "needRefresh": {
     "message": "Remember to refresh the page"
   },
-  "import": {
+  "importJSON": {
     "message": "Import"
   },
-  "export": {
+  "exportJSON": {
     "message": "Export"
   },
   "cancel":  {
