@@ -28,6 +28,11 @@ Add an environment marker to differentiate QA environments from production. In a
 
 🌟 4. Support regular expression matching, prefix matching, suffix matching and inclusion matching for host to differentiate different environments.
 
+
+### Special Thanks
+[![JetBrains](./docs/jetbrains.svg)](https://jb.gg/OpenSource)
+
+
 ## Develop Guide
 
 ### Install the quasar-cli and dependencies
