@@ -11,6 +11,8 @@
   <a href="https://chrome.google.com/webstore/detail/env-indicator/kgdbcpllbbnimjgoiomfdebldcofmlbl"><img src="https://img.shields.io/chrome-web-store/users/kgdbcpllbbnimjgoiomfdebldcofmlbl" alt="Chrome Store State"></a>
   <a href="https://chrome.google.com/webstore/detail/env-indicator/kgdbcpllbbnimjgoiomfdebldcofmlbl"><img src="https://img.shields.io/chrome-web-store/stars/kgdbcpllbbnimjgoiomfdebldcofmlbl" alt="Chrome Store Rate"></a>
   <a href="https://addons.mozilla.org/zh-CN/firefox/addon/env-indicator"><img src="https://img.shields.io/amo/v/env-indicator" alt="Firfox store"></a>
+  <a href="https://microsoftedge.microsoft.com/addons/detail/nlgegepgfcagnbjdnjbaoiiooklkhlcj"><img src="https://img.shields.io/badge/dynamic/json?label=edge%20add-on&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fnlgegepgfcagnbjdnjbaoiiooklkhlcj" alt="Edge store"></a>
+
 </p>
 
 Add an environment marker to differentiate QA environments from production. In addition, you can create your own indicator rules
