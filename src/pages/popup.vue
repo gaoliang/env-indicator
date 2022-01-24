@@ -16,51 +16,50 @@
 </template>
 
 <script>
-var browser = require("webextension-polyfill");
+const browser = require('webextension-polyfill')
 
 export default {
   name: 'Popup',
-  data() {
+  data () {
     return {
       enable: null
     }
   },
   methods: {
-    goOptions() {
+    goOptions () {
       browser.tabs.create({
         url: browser.extension.getURL('www/index.html')
       }).then((/* newTab */) => {
         // Tab opened.
       })
     },
-    change() {
-        this.$q.notify({
-          position: 'top',
-          timeout: 500,
-          message: this.$i18n('needRefresh')
-        })
+    change () {
+      this.$q.notify({
+        position: 'top',
+        timeout: 500,
+        message: this.$i18n('needRefresh')
+      })
     }
   },
-  mounted() {
-    let that = this;
+  mounted () {
+    const that = this
     browser.storage.sync.get(['enable']).then((result) => {
       // init enable value to true
       if (result.enable === undefined) {
         that.enable = true
-        browser.storage.sync.set({'enable': true})
+        browser.storage.sync.set({ enable: true })
       } else {
         that.enable = result.enable
       }
     })
   },
   watch: {
-    enable() {
-      browser.storage.sync.set({"enable": this.enable})
+    enable () {
+      browser.storage.sync.set({ enable: this.enable })
     }
   }
 }
 </script>
-
 
 <style>
 html, body {

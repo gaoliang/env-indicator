@@ -2,7 +2,7 @@
 // More info: https://quasar.dev/quasar-cli/developing-browser-extensions/content-hooks
 import { ribbonCorner } from 'ribbon-corner'
 import defaultEnvs from '../../src/assets/defaultEnvs.json'
-var browser = require("webextension-polyfill");
+const browser = require('webextension-polyfill')
 
 export default function attachContentHooks(/* bridge */) {
   // Hook into the bridge to listen for events sent from the client BEX.
@@ -21,7 +21,6 @@ export default function attachContentHooks(/* bridge */) {
 }
 
 function setEnv(env) {
-
   if (env.shape === 'triangle') {
     ribbonCorner({
       backgroundColor: env.envBackgroundColor,
@@ -33,7 +32,7 @@ function setEnv(env) {
       position: 'fixed',
       fontSize: 14
     })
-    document.getElementsByClassName("ribbon-corner")[0].prepend(document.createElement("br"))
+    document.getElementsByClassName('ribbon-corner')[0].prepend(document.createElement('br'))
   } else {
     ribbonCorner({
       backgroundColor: env.envBackgroundColor,
@@ -46,52 +45,49 @@ function setEnv(env) {
       fontSize: 14
     })
   }
-
 }
 
 browser.storage.sync.get(['enable', 'envs']).then(result => {
-
   // only return on enable is false
   if (result.enable === false) {
-    return;
+    return
   }
 
   let envs = result.envs
   if (result.envs === undefined) {
-    envs = defaultEnvs;
+    envs = defaultEnvs
     browser.storage.sync.set({
-      'envs': envs
+      envs: envs
     }).then(() => {
-      console.log("env indicator init default envs success!")
-    });
+      console.log('env indicator init default envs success!')
+    })
   }
 
   const domain = window.location.host
-  for (let env of envs) {
+  for (const env of envs) {
     switch (env.ruleType) {
-      case "contains":
+      case 'contains':
         if (domain.includes(env.ruleValue.toLowerCase())) {
           setEnv(env)
-          return;
+          return
         }
         break
-      case "prefix":
+      case 'prefix':
         if (domain.startsWith(env.ruleValue.toLowerCase())) {
           setEnv(env)
-          return;
+          return
         }
         break
-      case "suffix":
+      case 'suffix':
         if (domain.endsWith(env.ruleValue.toLowerCase())) {
           setEnv(env)
-          return;
+          return
         }
         break
-      case "regex":
-        const regex = RegExp(env.ruleValue);
-        if (regex.test(domain)) {
+      case 'regex':
+        if (RegExp(env.ruleValue).test(domain)) {
           setEnv(env)
-          return;
+          return
         }
     }
   }

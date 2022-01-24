@@ -53,14 +53,14 @@ const linksData = [
     caption: 'github.com/gaoliang/env-indicator',
     icon: 'code',
     link: 'https://github.com/gaoliang/env-indicator'
-  },
+  }
   // {
   //   title: 'Chrome Store',
   //   caption: 'Chrome store',
   //   icon: 'store',
   //   link: 'https://github.com/gaoliang/env-indicator'
   // }
-];
+]
 
 export default {
   name: 'MainLayout',

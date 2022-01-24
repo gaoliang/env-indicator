@@ -1,6 +1,6 @@
-import Vue from 'vue'
-
 const i18n = function (name) {
   return chrome.i18n.getMessage(name)
 }
-Vue.prototype.$i18n = i18n
+export default ({ app, router, store }) => {
+  app.config.globalProperties.$i18n = i18n
+}
