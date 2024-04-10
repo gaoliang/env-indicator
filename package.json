@@ -10,16 +10,18 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.16.11",
     "@sentry/tracing": "^6.2.1",
     "@sentry/vue": "^6.2.1",
     "core-js": "^3.6.5",
-    "quasar": "^2.0.0",
-    "ribbon-corner": "^1.0.5"
+    "quasar": "^2.15.2",
+    "ribbon-corner": "^1.0.5",
+    "vue": "3",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
-    "@quasar/app": "^3.0.0",
+    "@quasar/app-webpack": "^3.12.4",
     "eslint": "^7.14.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.19.1",
