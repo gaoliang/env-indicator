@@ -1,15 +1,15 @@
 <template>
-  <q-page class="flex flex-center">
-    <div class="q-pa-md">
-      <q-table
-        :title="this.$i18n('allEnvs')"
-        :data="envs"
-        :columns="columns"
-        row-key="index"
-        :hide-pagination="true"
+<q-page class="flex flex-center">
+  <div class="q-pa-md">
+    <q-table
+      :title="this.$i18n('allEnvs')"
+      :rows="envs"
+      :columns="columns"
+      row-key="index"
+       :hide-pagination="true"
         :pagination="pagination"
-      >
-        <template v-slot:top-right>
+    >
+    <template v-slot:top-right>
           <input
             ref="jsonUploader"
             type="file"
@@ -28,9 +28,6 @@
           <q-btn icon-right="archive" :label="this.$i18n('exportJSON')" no-caps @click="exportJson" />
         </template>
 
-        <template v-slot:body-cell-index="props">
-          <q-td :props="props">{{ props.rowIndex }}</q-td>
-        </template>
         <template v-slot:body-cell-envBackgroundColor="props">
           <q-td :props="props">
             <q-avatar size="24px" :style="{ backgroundColor: props.value }"></q-avatar>
@@ -70,10 +67,15 @@
             </q-btn-group>
           </q-td>
         </template>
-      </q-table>
-    </div>
 
-    <q-dialog v-model="formShow" persistent>
+    <template v-slot:body-cell-index="props">
+          <q-td :props="props">{{ props.rowIndex }}</q-td>
+        </template>
+    </q-table>
+    
+  </div>
+
+  <q-dialog v-model="formShow" persistent>
       <q-card style="width: 700px; max-width: 80vw;">
         <q-card-section class="row items-center q-pb-none">
           <div class="text-h6">{{ this.$i18n("addEnv") }}</div>
@@ -181,17 +183,17 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <q-btn fab icon="add" color="secondary" @click="addEnv" />
     </q-page-sticky>
-  </q-page>
+</q-page>
 </template>
 
 <script>
-import { extend } from 'quasar'
 import defaultEnvs from '../assets/defaultEnvs.json'
-const browser = require('webextension-polyfill')
+import  browser from 'webextension-polyfill'
+import { extend } from 'quasar'
+import { toRaw } from 'vue'; // what happend to vue3...
 
 function downloadTextFile (text, name) {
   const a = document.createElement('a')
@@ -202,69 +204,13 @@ function downloadTextFile (text, name) {
 }
 
 export default {
-  name: 'PageIndex',
-  data () {
+  data() {
     return {
       pagination: {
         rowsPerPage: -1 // current rows per page being displayed
       },
-      // all envs stored
-      envs: [],
-      // current editing row index, if null then create;
-      editRowIndex: null,
-      form: {
-        envName: null,
-        envBackgroundColor: '#00a300',
-        textColor: '#FFFFFF',
-        ruleType: 'contains',
-        ruleValue: '',
-        position: 'left',
-        shape: 'ribbon'
-      },
-
-      ruleTypeOptions: [
-        {
-          label: this.$i18n('contains'),
-          value: 'contains'
-        },
-        {
-          label: this.$i18n('prefix'),
-          value: 'prefix'
-        },
-        {
-          label: this.$i18n('suffix'),
-          value: 'suffix'
-        },
-        {
-          label: this.$i18n('regex'),
-          value: 'regex'
-        }
-      ],
-
-      positionOptions: [
-        {
-          label: this.$i18n('left'),
-          value: 'left'
-        },
-        {
-          label: this.$i18n('right'),
-          value: 'right'
-        }
-      ],
-
-      shapeOptions: [{
-        label: this.$i18n('ribbon'),
-        value: 'ribbon'
-      }, {
-        label: this.$i18n('triangle'),
-        value: 'triangle'
-      }],
-
-      accept: false,
-      formShow: false,
-      importConfirm: false,
       columns: [
-        {
+      {
           name: 'index',
           required: true,
           label: this.$i18n('order'),
@@ -322,21 +268,87 @@ export default {
           label: this.$i18n('operation'),
           field: 'operation'
         }
+      ], 
+      envs: [],
+      // current editing row index, if null then create;
+      editRowIndex: null,
+      form: {
+        envName: null,
+        envBackgroundColor: '#00a300',
+        textColor: '#FFFFFF',
+        ruleType: 'contains',
+        ruleValue: '',
+        position: 'left',
+        shape: 'ribbon'
+      },
+
+      ruleTypeOptions: [
+        {
+          label: this.$i18n('contains'),
+          value: 'contains'
+        },
+        {
+          label: this.$i18n('prefix'),
+          value: 'prefix'
+        },
+        {
+          label: this.$i18n('suffix'),
+          value: 'suffix'
+        },
+        {
+          label: this.$i18n('regex'),
+          value: 'regex'
+        }
       ],
+
+      positionOptions: [
+        {
+          label: this.$i18n('left'),
+          value: 'left'
+        },
+        {
+          label: this.$i18n('right'),
+          value: 'right'
+        }
+      ],
+
+      shapeOptions: [{
+        label: this.$i18n('ribbon'),
+        value: 'ribbon'
+      }, {
+        label: this.$i18n('triangle'),
+        value: 'triangle'
+      }],
+
+      accept: false,
+      formShow: false,
+      importConfirm: false,
       importData: {}
+
     }
+  },
+  mounted () {
+    const that = this
+    browser.storage.sync.get(['envs']).then((result) => {
+      that.envs = result.envs
+      console.log('rules currently is ', result.envs)
+      if (result.envs === undefined) {
+        that.envs = defaultEnvs
+        browser.storage.sync.set({ envs: defaultEnvs })
+      }
+    })
   },
   methods: {
     onSubmit () {
       if (this.editRowIndex !== null) {
-        this.$set(this.envs, this.editRowIndex, extend(true, {}, this.form))
-        console.log('editRowIndex', this.editRowIndex)
+        this.envs[this.editRowIndex] = extend(true, {}, this.form)
+        console.log('editRowIndex', this.editRowIndex, "after edit env=", this.envs)
       } else {
         this.envs.push(extend(true, {}, this.form))
       }
       const that = this
-      browser.storage.sync.set({ envs: this.envs }).then(() => {
-        console.log('envs is set to ', that.envs)
+      browser.storage.sync.set({ envs: toRaw(that.envs) }).then(() => {
+        console.log('envs is set to ', that.envs) 
       })
       // reset editing status
       this.editRowIndex = null
@@ -364,24 +376,25 @@ export default {
     },
     deleteEnv (props) {
       this.envs.splice(props.rowIndex, 1)
-      browser.storage.sync.set({ envs: this.envs }).then(() => {
+      browser.storage.sync.set({ envs: toRaw(this.envs) }).then(() => {
         console.log('envs is set to ' + this.envs)
       })
     },
     up (props) {
       const tmp = this.envs[props.rowIndex - 1]
-      this.$set(this.envs, props.rowIndex - 1, this.envs[props.rowIndex])
-      this.$set(this.envs, props.rowIndex, tmp)
-      browser.storage.sync.set({ envs: this.envs }).then(() => {
+
+      this.envs[props.rowIndex - 1] = this.envs[props.rowIndex]
+      this.envs[props.rowIndex] =  tmp
+      browser.storage.sync.set({ envs: toRaw(this.envs) }).then(() => {
         console.log('envs is set to ' + this.envs)
       })
     },
     down (props) {
       const tmp = this.envs[props.rowIndex + 1]
-      this.$set(this.envs, props.rowIndex + 1, this.envs[props.rowIndex])
-      this.$set(this.envs, props.rowIndex, tmp)
+      this.envs[props.rowIndex + 1] = this.envs[props.rowIndex]
+      this.envs[props.rowIndex] = tmp
 
-      browser.storage.sync.set({ envs: this.envs }).then(() => {
+      browser.storage.sync.set({ envs: toRaw(this.envs) }).then(() => {
         console.log('envs is set to ' + this.envs)
       })
     },
@@ -389,7 +402,7 @@ export default {
     importJson () {
       this.$refs.jsonUploader.click()
     },
-    uploadJsonChange (e) {
+    uploadJsonChange () {
       const that = this
       const reader = new FileReader()
       reader.onload = function fileReadCompleted () {
@@ -408,27 +421,14 @@ export default {
     },
     mergeImport () {
       this.envs = this.envs.concat(this.importData)
-      browser.storage.sync.set({ envs: this.envs })
+      browser.storage.sync.set({ envs: toRaw(this.envs) })
       this.importConfirm = false
     },
     overwriteImport () {
       this.envs = this.importData
-      browser.storage.sync.set({ envs: this.envs })
+      browser.storage.sync.set({ envs: toRaw(this.envs) })
       this.importConfirm = false
     }
-  },
-  mounted () {
-    const that = this
-    browser.storage.sync.get(['envs']).then((result) => {
-      that.envs = result.envs
-      console.log('rules currently is ', result.envs)
-
-      // put init data
-      if (result.envs === undefined) {
-        that.envs = defaultEnvs
-        browser.storage.sync.set({ envs: defaultEnvs })
-      }
-    })
   }
 }
 </script>
