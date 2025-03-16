@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/vue'
 
-export default ({ app, router, store }) => {
+export default ({ app}) => {
   Sentry.init({
     app,
     dsn: 'https://943feb238ce3482694f1b37acf0b38bc@o312877.ingest.sentry.io/5658043',

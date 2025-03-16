@@ -1,49 +1,42 @@
 {
-  "name": "env-indicator",
+  "name": "env-indicator-v2",
   "version": "0.0.1",
-  "description": "A Environment Indicator",
+  "description": "Add an environment marker to differentiate QA environments from production. In addition, you can create your own indicator rules",
   "productName": "Environment Indicator",
   "author": "gaoliang <gaoliangim@gmail.com>",
+  "type": "module",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "lint": "eslint -c ./eslint.config.js \"./src*/**/*.{js,cjs,mjs,vue}\"",
+    "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "postinstall": "quasar prepare"
   },
   "dependencies": {
-    "@quasar/extras": "^1.16.11",
-    "@sentry/tracing": "^6.2.1",
-    "@sentry/vue": "^6.2.1",
-    "core-js": "^3.6.5",
-    "quasar": "^2.15.2",
+    "@quasar/extras": "^1.16.4",
+    "@sentry/vue": "^9.5.0",
+    "quasar": "^2.16.0",
     "ribbon-corner": "^1.0.5",
-    "vue": "3",
-    "vue-router": "4"
+    "vue": "^3.4.18",
+    "vue-router": "^4.0.0",
+    "webextension-polyfill": "^0.12.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.13.14",
-    "@quasar/app-webpack": "^3.12.4",
-    "eslint": "^7.14.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-vue": "^7.0.0",
-    "eslint-webpack-plugin": "^2.4.0",
-    "webextension-polyfill": "^0.8.0"
+    "@eslint/js": "^9.14.0",
+    "@quasar/app-vite": "^2.1.0",
+    "@vue/eslint-config-prettier": "^10.1.0",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^9.14.0",
+    "eslint-plugin-vue": "^9.30.0",
+    "globals": "^15.12.0",
+    "postcss": "^8.4.14",
+    "prettier": "^3.3.3",
+    "vite-plugin-checker": "^0.9.0"
   },
-  "browserslist": [
-    "last 10 Chrome versions",
-    "last 10 Firefox versions",
-    "last 4 Edge versions",
-    "last 7 Safari versions",
-    "last 8 Android versions",
-    "last 8 ChromeAndroid versions",
-    "last 8 FirefoxAndroid versions",
-    "last 10 iOS versions",
-    "last 5 Opera versions"
-  ],
   "engines": {
-    "node": ">= 12.22.1",
+    "node": "^28 || ^26 || ^24 || ^22 || ^20 || ^18",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
   }
