@@ -45,7 +45,7 @@ yarn
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
-quasar dev -m bex
+quasar dev -m bex -T chrome
 ```
 
 ### Lint the files
@@ -55,7 +55,7 @@ yarn run lint
 
 ### Build the app for production
 ```bash
- quasar build -m bex
+ quasar build -m bex -T chrome
  ```
 
 ### Customize the configuration

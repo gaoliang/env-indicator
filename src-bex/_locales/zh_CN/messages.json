@@ -55,10 +55,16 @@
     "message": "位置"
   },
   "left": {
-    "message": "左侧"
+    "message": "左上角"
+  },
+  "left_bottom": {
+    "message": "左下角"
   },
   "right": {
-    "message": "右侧"
+    "message": "右上角"
+  },
+  "right_bottom": {
+    "message": "右下角"
   },
   "textColor": {
     "message": "文字颜色"

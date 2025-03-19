@@ -2757,10 +2757,10 @@ restore-cursor@^3.1.0:
     onetime "^5.1.0"
     signal-exit "^3.0.2"
 
-ribbon-corner@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/ribbon-corner/-/ribbon-corner-1.0.5.tgz#a0015b850e9c591565f0283561476d2626eb167f"
-  integrity sha512-wYjMZAI1EhXa0XLygQHzsNiEQEATqPMZSA/3LS71gent6mabhxJr0M6z7D/qa0kxPzH+m8JB6ZA3r+VMA9yp1A==
+ribbon-corner@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/ribbon-corner/-/ribbon-corner-1.0.9.tgz#98766a840a9865e9e9a942cfc67f570163aa3284"
+  integrity sha512-qfsaBjTvX3C8KrLN5a0yNmBfkY+CGCyJqog1QoK5xUvZNIUsS9DIgzKWB18tJSHNiEeMvHyhsKeuQpZl+BHNBg==
 
 rollup-plugin-visualizer@^5.13.1:
   version "5.14.0"
