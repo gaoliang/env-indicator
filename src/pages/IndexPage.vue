@@ -309,6 +309,14 @@ export default {
         {
           label: this.$i18n('right'),
           value: 'right'
+        },
+        {
+          label: this.$i18n('left_bottom'),
+          value: 'left_bottom'
+        },
+        {
+          label: this.$i18n('right_bottom'),
+          value: 'right_bottom'
         }
       ],
 

@@ -143,29 +143,43 @@ bridge.warn('Hello', 'world', '!', { some: 'object' })
 
 
 function setEnv(env) {
+  let horizontalAlign = 'left'
+  let verticalAlign = 'top'
+  
+  // 如果包含 right
+  if (env.position && env.position.includes('right')) {
+    horizontalAlign = 'right'
+  }
+  if (env.position && env.position.includes('bottom')) {
+    verticalAlign = 'bottom'
+  }
+  
+  var element
   if (env.shape === 'triangle') {
-    ribbonCorner({
+    element = ribbonCorner({
       backgroundColor: env.envBackgroundColor,
       toCorner: 30,
       height: 60,
-      horizontalAlign: env.position,
+      horizontalAlign: horizontalAlign,
+      verticalAlign: verticalAlign,
       text: env.envName,
       textColor: env.textColor,
       position: 'fixed',
       fontSize: 14
     })
-    document.getElementsByClassName('ribbon-corner')[0].prepend(document.createElement('br'))
   } else {
-    ribbonCorner({
+    element = ribbonCorner({
       backgroundColor: env.envBackgroundColor,
       toCorner: 60,
       height: 40,
-      horizontalAlign: env.position,
+      horizontalAlign: horizontalAlign,
+      verticalAlign: verticalAlign,
       text: env.envName,
       textColor: env.textColor,
       position: 'fixed',
       fontSize: 14
     })
+    element.style.justifyContent = "center"
   }
 }
 

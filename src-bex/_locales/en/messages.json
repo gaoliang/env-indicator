@@ -55,10 +55,16 @@
     "message": "Position"
   },
   "left": {
-    "message": "Left"
+    "message": "Top Left"
+  },
+  "left_bottom": {
+    "message": "Bottom Left"
   },
   "right": {
-    "message": "Right"
+    "message": "Top Right"
+  },
+  "right_bottom": {
+    "message": "Bottom Right"
   },
   "textColor": {
     "message": "Text Color"
